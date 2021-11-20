@@ -1,7 +1,7 @@
 function FilteredEventsPage() {
   return (
     <div>
-
+      
     </div>
   )
 }

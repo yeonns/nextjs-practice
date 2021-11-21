@@ -1,6 +1,12 @@
+import { ReactNode } from 'react';
 import classes from './logistics-item.module.css';
 
-function LogisticsItem(props) {
+type Props = {
+  children?: ReactNode;
+  icon: any;
+}
+
+function LogisticsItem(props: Props) {
   const { icon: Icon } = props;
 
   return (

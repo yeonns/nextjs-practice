@@ -1,7 +1,12 @@
+import { Event } from "../../dummy-data"
 import EventItem from "./event-item"
 import classes from './event-list.module.css'
 
-function EventList(props) {
+type Props = {
+  items: Event[]
+}
+
+function EventList(props: Props) {
   const { items } = props
 
   return (

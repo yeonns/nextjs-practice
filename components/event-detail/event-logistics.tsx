@@ -3,8 +3,14 @@ import DateIcon from '../icons/date-icon';
 import LogisticsItem from './logistics-item';
 import classes from './event-logistics.module.css';
 
-function EventLogistics(props) {
-  const { date, address, image, imageAlt } = props;
+type Props = {
+  date: string;
+  address: string;
+  image: string;
+  imageAlt: string;
+}
+
+function EventLogistics({date, address, image, imageAlt}: Props) {
 
   const humanReadableDate = new Date(date).toLocaleDateString('en-US', {
     day: 'numeric',

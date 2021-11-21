@@ -30,6 +30,8 @@ const DUMMY_EVENTS = [
     isFeatured: true,
   },
 ];
+
+export type Event = typeof DUMMY_EVENTS[0]
   
 export function getFeaturedEvents() {
   return DUMMY_EVENTS.filter((event) => event.isFeatured);

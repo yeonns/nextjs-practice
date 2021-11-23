@@ -5,6 +5,10 @@ import fs from 'fs/promises'
 function ProductDetailPage(props) {
   const { loadedProduct } = props
 
+  if (!loadedProduct) {
+    return <p>Loading...</p>
+  }
+
   return (
     <Fragment>
       <h1>{loadedProduct.title}</h1>
@@ -34,10 +38,9 @@ export async function getStaticPaths() {
   return {
     paths: [
       { params: { pid: 'p1' } },
-      { params: { pid: 'p2' } },
-      { params: { pid: 'p3' } },
     ],
-    fallback: false,
+    fallback: true,
+    //fallback: 'blocking', data fetch가 끝나기전에는 어떤 page도 띄워주지않음 if(!loadedProduct) { return <p>Loading...</p> } 제거 가능
   }
 }
 

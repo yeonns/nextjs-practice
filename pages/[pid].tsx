@@ -25,6 +25,10 @@ export async function getStaticProps(context) {
 
   const product = data.products.find(product => product.id === productId)
 
+  if (!product) {
+    return { notFound: true }
+  }
+
   return {
     props: {
       loadedProduct: product
@@ -43,11 +47,11 @@ async function getData() {
 export async function getStaticPaths() {
   const data = await getData()
   const ids = data.products.map(product => product.id)
-  const pathsWithParams = ids.map(id => ({ params: { pid: id }}))
+  const pathsWithParams = ids.map((id) => ({ params: { pid: id } }))
 
   return {
     paths: pathsWithParams,
-    fallback: false,
+    fallback: true,
     //fallback: 'blocking', data fetch가 끝나기전에는 어떤 page도 띄워주지않음 if(!loadedProduct) { return <p>Loading...</p> } 제거 가능
   }
 }
